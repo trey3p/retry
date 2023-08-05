@@ -1,0 +1,18 @@
+#+TITLE: Values
+#+OPTIONS: num:nil
+
+There are moments when decisions you take define who you are. Most of these
+decisions are hard and can't be taken without imposing biases. A few might be
+able to do, but I can't without breaking myself.
+
+Since it's hard to figure out the right biases /during/ the decisive moments, it's
+helpful to list them down deliberately so these moments don't hurt your sense of
+self in retrospect. These biases are /personal values/ for me.
+
+Here is my list of personal values:
+
++ Forgiveness
++ Courage
++ Freedom
++ Excellence
++ Self-Care

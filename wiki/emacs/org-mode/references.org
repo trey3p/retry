@@ -1,0 +1,49 @@
+#+TITLE: Reference Management
+
+This page documents my Emacs + [[https://www.zotero.org/][Zotero]] based setup for working with references
+and bibliographies. I maintain and organize libraries in Zotero. Earlier I used
+to keep a local BibTeX file but switching to Zotero helps while working with
+other people. I am still trying to iron out a few issues while working with
+these two systems at the moment, specially maintaining pdfs and syncing notes.
+
+#+BEGIN_aside
+We still keep annotated bibliographies in documents and wikis at work but per
+item notes are kept in Zotero.
+#+END_aside
+
+With Zotero, one issue had been of cite-keys which didn't work out well with my
+older Emacs only setup. But I found [[https://github.com/retorquere/zotero-better-bibtex][BBT]] that solves all these problems. I use
+the following cite-key format for BBT:
+=[auth:lower][year][veryshorttitle1_0:lower]=.
+
+* Capture
+Saving items to library is very easy thanks to [[https://www.zotero.org/download/connectors][Zotero connectors]]. Syncing this
+to Emacs is also easy because of BBT's [[https://retorque.re/zotero-better-bibtex/exporting/pull/][pull feature]]. [[https://github.com/lepisma/cfg/blob/master/scripts/bin/export-zotero][Here is the script]] I use
+for that.
+
+* Reading and annotations
+Although Emacs has a really decent pdf reading facility in [[https://github.com/politza/pdf-tools][pdf-tools]] now, it
+still provides a brittle experience. Text selection and scrolling doesn't feel
+as good as your regular pdf reader.
+
+I am now using [[https://okular.kde.org/][okular]] for reading all non plain text documents. It comes with
+really good support for file extensions and has complete annotation tooling
+(plus I am a KDE refuge). For seamlessly working with Emacs, I found [[https://bitbucket.org/jpkotta/openwith][openwith]]
+really useful.
+
+* Using references
+Not much to say here. [[https://github.com/jkitchin/org-ref][org-ref]] is a very feature complete solution for working
+with references in Org files. I am managing the following three locations using
+it:
+
+- The main bibliography file, ~org-ref-default-bibliography~. The helm functions
+  from org-ref make it really easy to search and add citations.
+- Notes file, ~org-ref-bibliography-notes~. This is published as a page [[pile:wiki:readings/notes/documents][here]].
+- PDFs in ~org-ref-pdf-directory~. PDFs kept here are picked up by org-ref
+  allowing you to open/send email etc. Since pdf download features requires more
+  metadata (at least DOI, if I read it right), I am keeping it a bit manual as
+  of now.
+
+Cross linking items is easy since they all are keyed by their cite-keys. Plus
+there are functions to extract document specific bibliographies so that I can
+keep pages here self contained.

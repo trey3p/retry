@@ -1,0 +1,111 @@
+#+TITLE: TikZ
+
+#+OPTIONS: toc:nil
+
+#+LATEX_CLASS: article
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{tikz-3dplot}
+#+LATEX_HEADER: \usepackage{float}
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \usepackage[11pt]{moresize}
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \usepackage{pgfplots}
+#+LATEX_HEADER: \usetikzlibrary{calc, positioning, shadows.blur, shapes.symbols}
+
+A few TikZ based drawings based on patchy understanding of its inner working.
+Nothing really nice or presentable. I just want to learn TikZ more.
+
+[[http://ctan.imsc.res.in/graphics/pgf/base/doc/pgfmanual.pdf][TikZ manual]].
+
+#+HEADER: :file ./output.png
+#+BEGIN_SRC latex :results raw file :eval export
+  \definecolor{fpink}{RGB}{255, 2, 131}
+  \definecolor{fblue}{RGB}{52, 121, 176}
+  \definecolor{fback}{RGB}{16, 40, 64}
+  \definecolor{fdark}{RGB}{12, 4, 15}
+  \definecolor{fbluedark}{RGB}{35, 83, 119}
+  \definecolor{forange}{RGB}{233, 122, 69}
+  \immediate\write18{yes | cp -r ./fonts /tmp}
+  \newfontfamily\stfont{LeviBrush}[Path = /tmp/fonts/]
+  \newfontfamily\fcfont{FarCry}[Path = /tmp/fonts/]
+
+  \pgfplotsset{ticks=none}
+  \pgfplotsset{%
+    colormap={blackblue}{color(0cm)=(fblue!!20!!black);
+    color(1cm)=(fblue!!80!!white)}
+  }
+  \begin{center}
+  \begin{tikzpicture}[
+    declare function = {
+     normal(\ma,\sa,\mb,\sb,\w) =
+       \w * 1/(2*pi*\sa*\sb) * exp(-((x-\ma)^2/\sa^2 + (y-\mb)^2/\sb^2))/2;
+    }
+  ]
+
+  \coordinate (BL) at (0,0);
+  \coordinate (BR) at (11,0);
+  \coordinate (TR) at (11,8);
+  \coordinate (TL) at (0,8);
+
+  \path (BL) -- (BR) -- (TR) -- (TL) -- cycle;
+  \fill[inner color=fback!85, outer color=fdark] (BL) rectangle (TR);
+
+  % grid lines
+  \begin{scope}
+  \clip (0, 0) rectangle (11, 4);
+  \foreach \i in {-15, ..., 25}
+  {
+    \draw[color=fpink, opacity=0.7] (\i,0) -- (5.5,6);
+  }
+
+  \foreach \i in {1, ..., 12}
+  {
+    \draw[color=fpink, opacity=0.7]
+      ($ (0, {0.67 * pow(\i, 0.7)})$) -- ($ (11, {0.67 * pow(\i, 0.7)})$);
+  }
+  \end{scope}
+
+  \shade[top color=fback!10!black, bottom color=fblue!70!black] (0,4) rectangle (11,8);
+  \begin{scope}[yshift=4cm]
+  \begin{axis}[
+    colormap name  = blackblue,
+    width          = 12.5cm,
+    height         = 3.0cm,
+    view           = {-140}{0},
+    enlargelimits  = false,
+    domain         = -1:4,
+    y domain       = -1:4,
+    samples        = 13,
+    axis line style={draw=none},
+    no markers
+  ]
+    % These should be automatically (randomly) generated.
+    \addplot3 [surf, draw=fblue, draw opacity=0.3, fill opacity=0.1, shader=flat]
+      {normal(1, 1.5, 3.5, 1.0, 1.5)};
+    \addplot3 [surf, draw=fblue!85!white, fill opacity=0.1, shader=flat]
+      {normal(1, 0.7, 4, 1, 0.7)};
+    \addplot3 [surf, draw=fblue!90!white, fill opacity=0.1, shader=flat]
+      {normal(0, 1, 2, 0.8, 0.9)};
+  \end{axis}
+  \end{scope}
+
+  \node at (5.5, 4) {\Huge \fcfont TIKZ};
+
+  \begin{scope}
+  \clip (0, 0) rectangle (11, 4);
+  \node at (5.5, 4.1) {\color{forange} \Huge \fcfont TIKZ};
+  \end{scope}
+
+  \begin{scope}
+  \clip (0, 4) rectangle (11, 8);
+  \node at (5.5, 4.1) {\color{fback} \Huge \fcfont TIKZ};
+  \end{scope}
+
+  \node at (5.5, 3) {\color{black} \HUGE \stfont BLOOD DRAGON};
+  \node at (5.5, 3.1) {\color{fpink} \HUGE \stfont BLOOD DRAGON};
+  \end{tikzpicture}
+  \end{center}
+#+END_SRC
+
+#+RESULTS:
+[[file:./output.png]]

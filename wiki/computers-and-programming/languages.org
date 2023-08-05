@@ -1,0 +1,274 @@
+#+TITLE: Language Exploration
+#+TODO: TODO | DONE
+
+#+begin_quote
+Not sure how to go about this page. Earlier I thought to just cover my personal
+exploration and usage, but now feel like probably an encyclopedic coverage might
+be better as I don't and won't go deep in all the languages.
+#+end_quote
+
+One of the parts of programming that I enjoy is learning/exploring new
+languages. This page aims to keep a log of that process (ignoring the languages
+whose interesting features are probably already present in others).
+
+Depending on what you want from a language, there are the following general
+areas to look for:
+
+1. The /core ideologies/ which define the language.
+2. General /code organization/, package system etc.
+3. Good practices, /libraries and ecosystem/.
+4. Knowledge of /internals and extensions/ which lets you simulate missing
+   features.
+
+For most of the languages here in the list, I want to have experience 1. A few
+languages that I regularly use will have all 4 points covered (eventually).
+Nevertheless, I will try to keep links and documentation for any and all points
+that I do explore for each language.
+
+* TODO Ada
+
+Specifically, I am interested in its generic system.
+
+* TODO APL/J/K
+
+Interested to look at this family because of:
+- Dedicated array manipulation functionality
+- Non ASCII characters
+
+* C
+
+I recently tried to /actually/ use C while doing some Advent of Code problems and
+working with Emacs Lisp dynamic modules. Its actually much nicer than I
+expected. Although there is no modern-ish package management, the type of
+packages I have been needing at this level are easy to get.
+
+A few resources that I am finding helpful based on whatever background I have:
++ [[https://matt.sh/howto-c][How to C]] and the [[https://modernc.gforge.inria.fr/][Modern C]] book.
++ A few useful nuggets from [[http://c-faq.com/][comp.lang.c Frequently Asked Questions]].
+
+* C++
+
+I have had some experience with C++ and know the general basics. As of now, I
+don't have anything specific to try learning its more advanced features. I /might/
+try it to learn some design patterns.
+
+* Clojure
+
+Creating a new section since I somehow have ended up using this more than others
+from the Lisp family. Coming from Emacs Lisp and Common Lisp, [[https://github.com/clojure-cookbook/clojure-cookbook][Clojure Cookbook]]
+was much better resource than the more famous ones like [[https://www.braveclojure.com][Brave Clojure]]. YMMW.
+
+* TODO COBOL
+
+Want to see how /English like/ it really is.
+
+* Common Lisp
+
+I have been using Common Lisp occasionally and strongly recommend trying. Things
+that I am missing are probably from the popular books that I will try to cover
+soon. Specially /Let Over Lambda/ and /The Art of Metaobject Protocol/.
+
+Lack of community hurts though.
+
+General resources:
+- Use [[https://github.com/roswell/roswell][roswell]] for building command line tools.
+- [[https://github.com/takagi/lake][lake]] is a neat make alternative.
+- I keep a list of utility packages that I ~:use~ in repl (and shell-ish scripts)
+  [[https://github.com/lepisma/cfg/blob/master/pod/package.lisp][here]]. Probably you could use something like [[https://github.com/cl21/cl21][cl21]] but then you would want to
+  write packages in cl21 too.
+- CL is also great for scripting if you live in the repl. I wrote my workflow
+  [[pile:journal:2018/10/07/lisp-shell-scripts][here]].
+
+* TODO Coq
+
+* TODO D
+
+* TODO Dylan
+
+Have heard a lot about [[https://opendylan.org/articles/macro-system/index.html][dylan macros]]. Considering that its syntax is pretty non
+Lispy, its really interesting to know how macros feel in here. This might
+probably be similar to how they feel in R or Julia, or maybe not.
+
+* TODO Eiffel
+
+/Contracts/ are the basic motivation here.
+
+* TODO Elm
+
+* TODO Elixir
+
+* Emacs Lisp
+
+One of those language that tell you how pleasant programming can be even in a
+badly designed system /if/ the language is well integrated in the environment and
+community is alive.
+
+General resources:
+- Use [[https://github.com/magnars/s.el][s]], [[https://github.com/magnars/dash.el][dash]], [[https://github.com/rejeep/f.el][f]] and [[https://github.com/Wilfred/ht.el][ht]] while programming in elisp for maximum pleasure.
+- [[https://phst.eu/emacs-modules.html][Here]] is a great documentation for creating and working with dynamic modules.
+
+* TODO Erlang
+
+I have been playing with Erlang a little bit recently. The syntax at first looks
+weird but makes much more sense after you try Prolog first. The killer feature,
+actor based concurrency, is something I haven't really tried yet.
+
+Looking for a nice problem to proceed here.
+
+As far as other BEAM languages are concerned, Elixir looks neat but probably
+won't have much to throw at me if I look into the ML family first.
+
+* Factor
+
+I used factor once very long ago and didn't appreciate it then. Recently used
+some of its features and am impressed. The special point to mention is how
+clearly the /code is data/ idea translates here. Other than trying out its
+extensive set of libraries, I am interested in learning more about /quotations/
+and trying to implement the language itself.
+
+* TODO Haskell
+
+Not sure if I will be using this IRL, but is a nice language to learn a lot of
+ideas from. A few resources that I have touched:
+
+1. Obviously [[http://learnyouahaskell.com/][Learn You a Haskell for Great Good!]] Not sure if this really helped
+   though. Too much of someone else controlling the speed made me stop somewhere
+   midway.
+2. [[https://github.com/soupi/haskell-study-plan][Haskell Study Plan]]. This one is much more self paced, flexible and practical.
+
+* TODO Idris
+
+* Io
+
+Touched Io in 'Seven Languages in Seven weeks'. It is a good case study for
+learning about
+
+- Message passing system
+- Prototype based objects
+
+There are other interesting features like the actor based concurrency model but
+I am more inclined to try that in Erlang, so nothing much to do here.
+
+* Java
+
+I get to use it at a few places occasionally. Java has evolved but there are so
+much better languages right now on JVM that I probably will never touch it
+again.
+
+* JavaScript/TypeScript
+
+Modern JS has come a long way and has some seriously powerful features. I have
+been using it along with TypeScript and like both a lot. As of now, there is no
+specific language feature on my list. Probably after digging deeper into the
+runtime there will be some.
+
+* TODO Julia
+
+Have used it as a Python user would. Like R, the interesting things here are in
+the language core and how the AST manipulation works. Will be looking into those
+soon.
+
+* TODO Lua
+
+Lua probably is pretty well used in the game community and has some really nice
+engines. Will be trying it while working on a game.
+
+* Nim
+
+I have tried it in pieces here and there. Looks like follows the following
+relation ~crystal:ruby::nim:python~. I don't have any specific use case for it
+though so probably won't be jumping deeper here.
+
+* OCaml
+
+OCaml got me into pattern matching and algebraic data types. That's probably
+enough of this since I find Haskell more interesting now.
+
+* TODO Prolog
+
+I have an okayish understanding of Prolog now but sometimes the programs get
+stuck pretty deep while backtracking. Will need to dig into the language and
+implementation to see what's missing.
+
+* Python
+
+Probably my main language as of now. Is pretty practical so has some annoying
+warts. Not much to dig here.
+
+General resources:
+- [[https://chrisyeh96.github.io/2017/08/08/definitive-guide-python-imports.html][The Definitive Guide to Python import Statements]] is a neat guide explaining
+  the import mess in Python.
+- Want more structure in python programs? Use [[https://github.com/ericvsmith/dataclasses][dataclasses]]/[[https://github.com/python-attrs/attrs][attrs]] and [[https://github.com/python/mypy][mypy]].
+- [[https://github.com/dgilland/pydash][pydash]] has nice set of high level functions.
+- [[https://github.com/mahmoud/glom][glom]] helps in working with nested data.
+- For workflow management, I find [[https://snakemake.readthedocs.io/][snakemake]] really useful. Combining it with
+  [[https://conda.io/][conda]] gives nice pavement for exploratory projects. +For scripts, [[https://github.com/kennethreitz/pipenv/][pipenv]] is
+  probably the cleanest solution+.
+- Use [[https://poetry.eustace.io/][poetry]] for developing python libraries and/or scripts. It avoids ~setup.py~
+  and its brothers altogether.
+- For managing python versions, I have found [[https://github.com/pyenv/pyenv-installer][pyenv]] to be very clean. Along with
+  poetry for managing virtualenvs, this helps in closing the loop.
+- I like [[https://github.com/docopt/docopt][docopt]] for command line parsing. Even though there are probably valid
+  arguments /against/ it, since it's not very popular, I haven't really felt any
+  problem with it til now.
+
+* R
+
+R's problem domain already has mirrors in Python so its not worth that much. The
+more interesting part however comes in the language itself. A lot of nice
+package APIs in R are result of the meta programming support in R.
+
+[[http://adv-r.had.co.nz/][Advanced R]] has a section on metaprogramming which should be a good place to
+begin.
+
+* TODO Racket
+
+Separating this from the Lisp family because its not a Lisp in the strict sense.
+Few reasons for learning this specifically:
+- [ ] Hygienic macros
+- [ ] First class continuations
+- [ ] Typed racket
+
+Although I have used it occasionally, I haven't really committed to it. A piece
+that keeps tempting me here are the carefully crafted documentations and proses
+surrounding this.
+
+* TODO  REBOL / Red
+
+* Ruby
+
+Last I used, it felt like a better Python. Better lambdas, better shell
+integration and better class system. Though Python's package ecosystem is too
+expansive and complete that I mostly won't be doing anything here.
+
+* TODO Rust
+
+A bit of fad at the moment, but has modern features for everything possible with
+something like C++. Not sure if I will be able to start properly without pushing
+this somehow in workplace.
+
+* Scala
+
+Tried this while going through the book 'Seven Languages in Seven Weeks'. Its
+focused a lot on practicalities and so is more of a mixture of tricks rather
+than having a definite ideological inclination. You can't love more than a
+couple /practical/ languages. I am already full.
+
+* TODO Shen
+
+Don't remember where I got the reference from for this. A cursory glance tells
+probably there are a few /novel/ features rather than a compendium.
+
+* TODO Squeak/Smalltalk
+
+The key /experience/ here might not be Object Oriented Programming but the
+immersive, live IDE(s).
+
+* TODO TeX
+
+* TODO Webassembly
+
+Not a language to learn as such, but am wanting to get in the compiler side
+using this pathway.
+
+* TODO Zig

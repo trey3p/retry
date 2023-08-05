@@ -1,0 +1,9 @@
+#+TITLE: Org Mode
+
+Org mode stuff needed a separate section.
+
+* Pages in this section
+
+#+BEGIN_SRC emacs-lisp :eval export :results raw :exports results
+(princ (pile-index-format))
+#+END_SRC

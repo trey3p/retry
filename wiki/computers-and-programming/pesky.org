@@ -1,0 +1,16 @@
+#+TITLE: Pesky Little Things
+
+From whatever I have experienced, there are two kind of mental models provided
+by programming tools, /simple/ (e.g. [[http://dplyr.tidyverse.org/][dplyr]]) and /complex/ (e.g. [[https://pandas.pydata.org/][pandas]]). If used
+sparingly, most complex tools are really annoying unless, of course, you clearly
+understand the idea behind the models they expose. Here are some tools in that
+category which I would like to study very /thoroughly/ sometime:
+
+- [ ] Matplotlib. Maybe the recent updates made the API cleaner. A good resource
+  to start might be [[http://www.labri.fr/perso/nrougier/teaching/matplotlib/matplotlib.html][this]].
+- [ ] $\LaTeX$ is irritating and is almost everywhere. Going through the
+  recommended [[https://en.wikibooks.org/wiki/LaTeX][wikibook]] might help. Also [[http://csweb.ucc.ie/~dongen/LAF/LAF.html][LaTeX and Friends]] has good coverage of
+  TikZ too.
+- [ ] [[https://sourceforge.net/projects/pgf/][TikZ]]. Inkscape has pretty weak scripting capabilities.
+- [X] +Regex. I specifically need to understand how it works to really
+  appreciate it.+

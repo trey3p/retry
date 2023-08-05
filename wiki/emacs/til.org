@@ -1,0 +1,492 @@
+#+TITLE: Today I Learned /in Emacs/
+
+/Today I learned, Emacs version. More of a mini blog. Inspired by [[https://github.com/jbranchaud/til][jbranchaud/til]]./
+
+#+BEGIN_aside
+This page /used to/ live in a separate repository [[https://github.com/lepisma/til-emacs][here]]. Now, well, its here.
+#+END_aside
+
++ *svg screenshots*
+
+  Starting version 27, [[https://www.reddit.com/r/emacs/comments/idz35e/emacs_27_can_take_svg_screenshots_of_itself/][Emacs let's you take svg screenshots of itself]].
+
++ *signals*
+
+  You can bind =SIGUSR1= and =SIGUSR2= to [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Misc-Events.html#Misc-Events][custom functions]]. =SIGUSR2= is also tied to
+  =debug-on-event= that makes it pretty handy.
+
++ *org repeaters*
+
+  There are more types of repeaters for tasks in org mode than just plain =+1d=
+  style. Check [[https://orgmode.org/manual/Repeated-tasks.html][here]].
+
++ *calling convention docstring*
+
+  At times, you want to specify a different calling function signature to show
+  up when inspecting a function. This is useful in macros (as the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Function-Documentation.html#Function-Documentation][doc says here]])
+  and dynamic module definitions (in C for example) where you don't have a way
+  of specifying lambda list properly. For doing this, you need to extend
+  docstrings as:
+
+#+begin_quote
+The last line of the documentation string can specify calling conventions
+different from the actual function arguments. Write text like this:
+
+~\(fn arglist)~
+
+following a blank line, at the beginning of the line, with no newline following
+it inside the documentation string. (The ‘\’ is used to avoid confusing the
+Emacs motion commands.) The calling convention specified in this way appears in
+help messages in place of the one derived from the actual arguments of the
+function.
+#+end_quote
+
++ *docstring keys*
+
+  When you want up to date keymaps to be shown in docstrings, you can use
+  special sequences as specified [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Keys-in-Documentation.html#Keys-in-Documentation][here]] which are substituted depending on current
+  bindings.
+
++ *ede*
+
+  [[https://www.gnu.org/software/emacs/manual/html_node/ede/index.html][EDE]] tries to add IDE like project level abstractions and actions to Emacs.
+  Going through the README makes me feel as if I am not missing anything
+  substantial by not using it. Probably there are other piecemeal tools which
+  make up for everything EDE tries to support (similar to CEDET).
+
+  One reason I might be wrong in estimating its usefulness is that I personally
+  haven't tried using a lot of IDEish features like debugging etc. in Emacs
+  itself.
+
++ *org-edna*
+
+  [[https://www.nongnu.org/org-edna-el/][Edna]] allows adding dependencies in org mode headings. The doc has good
+  examples. I have tried it a little but not sure if I will be using it
+  regularly.
+
++ *Mouse tracking*
+
+  ~track-mouse~ is a neat macro for things that depend on mouse movements.
+  Probably artist mode uses it. I got to know about this from the awesome [[https://github.com/chuntaro/epaint][epaint]]
+  program.
+
++ *abnormal hooks*
+
+  There is a naming convention for variables holding hook functions. One such is
+  /abnormal hooks/ which I never thought of as something with specific meaning.
+  [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hooks.html][The doc]] explains.
+
++ *eval-defun*
+
+  While working with elisp, resetting ~defcustom~ like variables using
+  ~eval-last-sexp~ doesn't work. I used to write a quick ~setq~ to do these things
+  but found that I could use ~eval-defun~ with the same /setq/ effect. Check this
+  [[https://emacs.stackexchange.com/a/2302][answer]].
+
++ *org radio-targets*
+
+  Another /hidden gem/ from Cheong Yiufung's series (post [[https://yiufung.net/post/org-mode-hidden-gems-pt3/][here]]).
+
+  If you want to make a particular phrase link to someplace, for example a
+  definition, without adding a lot of manual links, you can put that word within
+  triple ~<<<word>>>~ angles along with the definition. All other presences will
+  become links pointing to this place. These links are also there in exports
+  which is /really/ nice.
+
++ *link abbreviations*
+
+  A much neater solution for creating custom org links if you only want a fixed
+  string based expansion (exports also work as you would expect). Setting
+  ~org-link-abbrev-alist~ let's you write a shorthand link like
+  ~[[yt:dQw4w9WgXcQ][some-nice-video]]~ which can act like a fuller [[https://www.youtube.com/watch?v=dQw4w9WgXcQ][link]].
+
+  There is a more convenient and local shorthand for this that works by putting
+  something like ~#+LINK: yt https://www.youtube.com/watch?v=~ in the buffer.
+
+  Taken from [[https://yiufung.net/post/org-mode-hidden-gems-pt3/][here]].
+
++ *org-catch-invisible-edits*
+
+  At times your cursor ends up adding unwanted edits in folded org section. This
+  variable has solutions. Got to know from the post [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][Org-mode Hidden Gems - 01
+  Document Structure]].
+
+  A very interesting thing about this particular setting is that I wasn't
+  expecting a solution for this issue, even though I had been facing this for a
+  long time.
+
++ *emacs regex case*
+
+  By default elisp regex match functions are [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Searching-and-Case.html][case insensitive]]. Setting
+  ~case-fold-search~ to nil changes the behavior. This is a til mostly because I
+  find this behavior very surprising. Probably more surprising is that nothing
+  bad happened, making me think that I probably don't need case sensitivity that
+  much.
+
++ *systemd unit*
+
+  Starting from v 26.1, you can use Emacs daemon as a systemd unit. See
+  discussions [[https://www.reddit.com/r/emacs/comments/b8ksfs/psa_for_new_users_emacs_261_has_the_emacs_daemon/][here]].
+
++ *future history*
+
+  Check [[https://engineering.collbox.co/post/working-faster-in-emacs-by-reading-the-future/][this]] out.
+
++ *drag and drop*
+
+  Not sure if I have ever used this feature in any text editor, but [[https://emacs.stackexchange.com/questions/21210/drag-selected-text-with-the-mouse/48440#48440][here]] it is.
+
++ *registers*
+
+  [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html][Registers]] are one of the little known features of Emacs. They essentially act
+  like variables which are made quick to access by mapping single chars to them.
+  Also their default impermanence across sessions probably makes them a little
+  different from other stores.
+
+  Similar to /unsaved/ keyboard macros, thees can probably be useful for
+  temporary, single session tasks. For example the text registers for working
+  with temporary templates, the number register for counting things etc.
+
++ *enriched-mode*
+
+  Emacs has a tiny [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Enriched-Text.html#Enriched-Text][markup language]] that keeps things like face info along with
+  text to show rich text in buffers.
+
++ *directory-local vars*
+
+  There is [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][a way]] to set variables for a directory. Not sure if I will be wanting
+  to use this but since it also allows ~eval~, there is a lot of potential.
+
++ *profiling*
+
+  Along with ~benchmark-run~, the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Profiling.html][emacs profiler]] is a handy way to check part of
+  your lisp code is eating up the major time.
+
++ *dbus*
+
+  Emacs has proper dbus support (check the manual). Someone made a [[https://github.com/clarete/eosd][notification
+  daemon]] on it. Also [[https://stackoverflow.com/a/7715123][this answer]] is helpful if you are starting.
+
++ *progress bar*
+
+  There is a [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Progress.html][progress reporter]]. A unicode version is [[https://github.com/rolandwalker/unicode-progress-reporter][here]].
+
++ *charts*
+
+  Emacs comes with a small and decent charting library. See [[http://francismurillo.github.io/2017-04-15-Exploring-Emacs-chart-Library/][this article]] for an
+  introduction.
+
++ *edebug*
+
+  I am trying to use debuggers more than /prints/. In the process found ~edebug~ for
+  emacs lisp, which is really easy to use and works nicely on the source code
+  level.
+
++ *macro indentation*
+
+  Custom macros show up really badly when indented in elisp code. I didn't try
+  to search for a solution earlier but we can allow arbitrary indentation in
+  [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Indenting-Macros.html#Indenting-Macros][macros]]. Adding ~(declare (indent defun))~ works for me in most of the cases.
+
++ *buffer local hooks*
+
+  ~add-hook~ takes an argument ~local~ to set buffer local hooks. This is really
+  useful in cases like:
+
+  #+BEGIN_SRC emacs-lisp
+  (add-hook 'after-save-hook #'org-babel-tangle nil t) ; Last t is for local
+  #+END_SRC
+
+  This can probably be plugged in [[https://stackoverflow.com/questions/4356472/emacs-per-file-customization/4356877#4356877][eval section]] at the top of files, though I am
+  not sure if thats the right way.
+
++ *inline code blocks*
+
+  Inline /executable/ code blocks can be written in org mode as:
+
+  #+BEGIN_SRC emacs-lisp
+  src_LANG[HEADERS]{CODE}
+  #+END_SRC
+
+  A snippet like the following then shows up like this src_emacs-lisp[:exports
+  both :results value]{(+ 1 1)} {{{results(=2=)}}}:
+
+  #+BEGIN_EXAMPLE
+  src_emacs-lisp[:exports both :results value]{(+ 1 1)} {{{results(=2=)}}}  
+  #+END_EXAMPLE
+
++ *dump-emacs*
+
+  Similar to most Common Lisp implementations, emacs also provides a /dump/
+  function which dumps the state. Although this is mostly for development
+  purpose and not really useful. See this [[https://www.reddit.com/r/emacs/comments/2rietp/dumpemacs_truly_speeds_up_emacs_startup/][thread]].
+
++ *magic file names*
+
+  You can define specific /handlers/ for certain file name patterns which can then
+  override the behavior in interesting ways. [[https://bitbucket.org/jpkotta/openwith][openwith]] exploits this by
+  associating external programs with specific file formats. This capability
+  might allow creating hacks like [[https://github.com/rasguanabana/ytfs][ytfs]] in elisp. Documentation is [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Magic-File-Names.html][here]].
+
++ *reader macros*
+
+  Unlike common lisp, the reader for Elisp is not open for extension (in elisp
+  that is; of course you can modify the C sources). [[https://github.com/mishoo/elisp-reader.el][Here]] is a custom reader
+  reader /in elisp/ which lets you define custom reader macros.
+
++ *org macros*
+
+  Org mode allows simple text replacement macros with arguments for export. See
+  more [[https://orgmode.org/manual/Macro-replacement.html][here]].
+
++ *benchmark-run*
+
+  Just what you expect. Learnt from [[http://irreal.org/blog/?p=400][here]]. Also check ~benchmark-run-compiled~ if
+  you want to compare compiled elisp performance.
+
++ *calc*
+
+  Emacs has a very elaborate calculator capable even of symbolic mathematics and
+  manipulation. Check [[http://nullprogram.com/blog/2009/06/23/][this blog post]] by Chris to get a feel. I used to call
+  [[https://github.com/sharkdp/insect][insect]] to perform unit conversions, but looks like /calc/ is enough.
+
++ *tail calls*
+
+  Emacs lisp doesn't optimize tail calls. This forces you to use loops (like
+  ~while~) instead of recursion. Two workarounds are [[https://github.com/Wilfred/tco.el][tco]] and [[https://github.com/VincentToups/recur][recur]].
+
++ *two columns*
+
+  [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Two_002dColumn.html][Two column editing]] lets you split the current buffer in two columns
+  (obviously) which are finally merged in one. I am trying to use it for writing
+  sidenotes in org files. Will have issues with org-export though.
+
++ *gap buffers*
+
+  Emacs internally uses [[https://en.wikipedia.org/wiki/Gap_buffer][gap buffers]] to represent text (in buffers). Current gap
+  values can be accessed using functions ~gap-position~ and ~gap-size~. See the page
+  on [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Buffer-Gap.html][manual]] for more.
+
++ *reverse variable search*
+
+  Weird but possibly useful. ~apropos-value~ lets you search for variables with
+  provided value.
+
++ *literate configuration*
+
+  Using ~org-babel-load-file~, you can load emacs-lisp snippets from an org file.
+  This is great for maintaining readable configuration like done in
+  [[https://github.com/eschulte/emacs24-starter-kit][emacs24-starter-kit]].
+
++ *image tooltips*
+
+  Its [[https://www.youtube.com/watch?v=uX_hAPb9NOc][possible]] to show image inside the regular emacs tooltips. This is handy
+  for documents with linked images.
+
++ *capturing buffer bookmarks*
+
+  Org capture has templates (~%a~, ~%A~ etc.) for capturing the location where the
+  org-capture was called. This comes in handy with emails, todos in code etc.
+
++ *narrow region*
+
+  Narrowing allows showing only a certain part of a buffer instead of full
+  content. This lets you work on the narrowed region without affecting other
+  stuff.
+
++ *org-edit-special*
+
+  Special chunks in org mode like babel source blocks can be edited in a
+  separate dedicated buffer using ~org-edit-special~.
+
++ *rectangle insert*
+
+  Iedit has a ~iedit-rectangle-mode~ which lets you edit vertical chunks. Handy
+  for enforcing indentation over a section.
+
++ *undo-tree*
+
+  [[https://elpa.gnu.org/packages/undo-tree.html][undo-tree]] maintains a tree instead of a linear undo/redo history. Wish there
+  was something similar for krita/gimp.
+
++ *org-store-link*
+
+  Special bookmarks to [[http://orgmode.org/manual/Handling-links.html][different]] modes can be saved in org files using
+  ~org-store-link~ and ~org-insert-link~.
+
++ *common lisp emulation*
+
+  Elisp can simulate many features of common lisp, including full fledged
+  function arguments, using the ~cl~ package.
+
++ *winner-mode*
+
+  Probably too late to know about it. Winner mode lets you undo/redo window
+  configuration.
+
++ *file-watch*
+
+  ~file-notify-add-watch~ allows hooking up callbacks for file changes.
+
++ *re-builder*
+
+  Emacs lets you check regex on the fly in current buffer using ~re-builder~.
+
++ *obarray*
+
+  ~obarray~ refers to a vector of symbols which are interned and is used for
+  looking up value of symbols.
+
++ *latex fragment preview*
+
+  Latex code snippets can be previewed directly in org-mode using
+  ~org-toggle-latex-fragment~.
+
++ *dired drag and drop*
+
+  Dropping a file to a dired buffer copies stuff to it.
+
++ *advising functions*
+
+  Elisp lets you /add/ a custom behavior on an already existing function
+  using the [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html#Advising-Functions][advising facility]].
+
++ *highlight-regexp*
+
+  Highlight a regexp in buffer with certain color using ~highlight-regexp~.
+
++ *eieio*
+
+  Emacs Lisp has an Object Oriented Programming system called
+  [[https://www.gnu.org/software/emacs/manual/eieio.html][EIEIO]] mimicking Common Lisp Object System.
+
++ *org-protocol*
+  
+  #+BEGIN_QUOTE
+  org-protocol intercepts calls from emacsclient to trigger custom actions
+  without external dependencies. Only one protocol has to be configured with
+  your external applications or the operating system, to trigger an arbitrary
+  number of custom actions. Just register your custom sub-protocol and handler
+  with the variable `org-protocol-protocol-alist'.
+  #+END_QUOTE
+
+  Taken from [[http://orgmode.org/worg/org-contrib/org-protocol.html#orgheadline4][here]]. Probably the best surprise feature I found till date.
+
++ *comint mode scroll*
+
+  Comint mode (all the shell-ish processes), by default (in spacemacs at least),
+  shows everything possible whenever a shell output comes out. This results in
+  pushing (scrolling) the current line to the bottom even when you were up
+  somewhere. This can be fixed by setting ~comint-scroll-show-maximum-output~ to
+  ~nil~.
+
++ *custom agenda views*
+
+  Org agenda view allows custom built views by customizing the variable
+  ~org-agenda-custom-commands~. The customization lets you work with separate
+  files, tags, todo-states and much [[http://orgmode.org/worg/org-tutorials/org-custom-agenda-commands.html][more]].
+
++ *current-prefix-arg*
+
+  Setting ~current-prefix-arg~ variable works as ~C-u~ key for the command in
+  scope. This allows wrapping up some useful commands with prefix arguments.
+
++ *apropos*
+  
+  Apropos commands (~apropos~, ~apropos-command~ etc.) do full text searches
+  over corresponding components (symbols, commands, etc.) and are powerful and
+  useful than the regular ways.
+
++ *caching sudo password in eshell*
+
+  Eshell can use tramp's sudo instead of ~/usr/bin/sudo~ and then cache
+  passwords. Setting alias by ~alias sudo 'eshell/sudo $*'~ in eshell after
+  setting up cache does the trick.
+  #+BEGIN_SRC elisp
+    (use-package em-tramp
+      :config
+      (setq eshell-prefer-lisp-functions t)
+      (setq password-cache t)
+      (setq password-cache-expiry 3600))
+  #+END_SRC
+  [[https://emacs.stackexchange.com/questions/5608/how-to-let-eshell-remember-sudo-password-for-two-minutes][Source]]
+
++ *syntax table*
+
+  Emacs maintains what are called /syntax table/ for modes which define which
+  character is going to be treated as what. As an example, you could set ~$~ as
+  a whitespace character to assist jumping around in text by using
+  ~(modify-syntax-entry ?$ " ")~
+
++ *ditaa & dot*
+
+  Babel has great support for [[http://ditaa.sourceforge.net/][ditaa]] and [[http://www.graphviz.org/][dot]] snippets, allowing creation of
+  graph, drawings and flowcharts easily.
+
++ *lexical scoping*
+
+  Adding ~;;; -*- lexical-binding: t -*-~ to the header enables lexical binding
+  in an elisp source file.
+
++ *inserting unicode by name*
+
+  ~C-x 8 RET~ lets you search and insert unicode character by Unicode name.
+
++ *getting mouse position*
+
+  There are functions to get current position of mouse both in terms of
+  pixels ~mouse-pixel-position~ and characters ~mouse-position~ relative to
+  current frame (or absolute ~mouse-absolute-pixel-position~).
+
++ *smerge*
+
+  ~smerge-mode~ allows easy conflict resolution for merges. Move pointer to the
+  conflict and use ~smerge-keep-mine~ / ~smerge-keep-other~.
+
++ *edit file properties in dired*
+
+  Dired allows a special mode, wdired (~C-x C-q~), that lets dired buffer
+  editings -- like renaming files, changing permissions, etc. -- get reflected
+  to the file system. More details [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Wdired.html#Wdired][here]].
+
++ *external functions in org tables*
+
+  Any babel code block returning value can be referenced by its ~name~ and
+  called as a function for org tables. More details [[http://ehneilsen.net/notebook/orgExamples/org-examples.html#sec-8][here]].
+
++ *form feed lines*
+
+  Many popular elisp source files get rendered in spacemacs with sections
+  separated by neat horizontal lines. TIL those are form feed characters ~^L~
+  and are rendered using packages like [[https://github.com/purcell/page-break-lines][page-break-lines]].
+
++ *kill-ring*
+
+  Recently stopped using CUA keybindings. This opened me up to use the
+  kill-ring, which is a list with kill (cut, copy) history. Simple cut, copy,
+  paste are ~C-w~ (/kill/), ~M-w~ (/kill-save/) and ~C-y~ (/yank/). Cycle
+  through the ring while yanking using ~M-y~. Use ~helm-show-kill-ring~ for a
+  better kill-ring browsing experience.
+
++ *elisp scripts*
+  
+  Using Emacs for general purpose scripting has multiple issues. Many are
+  documented [[http://www.lunaryorn.com/posts/emacs-script-pitfalls.html#section-inhibiting-site-start][here]]. For me, package loading is a major one. A lot of
+  /not-inside-emacs/ scripts wont be helpful without packages like [[https://github.com/rejeep/f.el][f]], [[https://github.com/magnars/dash.el][dash]] and
+  [[https://github.com/magnars/s.el][s]]. [[https://github.com/cask/cask][cask]] provides a way out. Init a caskfile (~cask init~), install
+  dependencies (~cask install~), run (~cask emacs --script something.el~).
+
++ *data structures*
+
+  I never went beyond list. Knew about [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Association-Lists.html][alists]], but didn't know there are
+  [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Hash-Tables.html][hash tables]] and [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Vectors.html][vectors]] too. In case you are working with key-value pairs in
+  either hash table or alist form, try [[https://github.com/Wilfred/ht.el][ht.el]].
+
++ *org-contacts*
+
+  You can use [[https://julien.danjou.info/projects/emacs-packages#org-contacts][org-contacts]] from org-contrib to manage contacts. This is really
+  neat considering it integrates with gnus.
+
++ *mpc*
+
+  There is a pretty nifty [[https://www.musicpd.org/][mpd]] client built into Emacs. Use ~M-x mpc~.

@@ -1,0 +1,9 @@
+#+TITLE: Procedural
+
+A few procedurally generated pieces categorized according to the tool used.
+
+* Pages in this section
+
+#+BEGIN_SRC emacs-lisp :eval export :results raw :exports results
+(princ (pile-index-format))
+#+END_SRC

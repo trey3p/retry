@@ -1,0 +1,23 @@
+#+TITLE: (/car/ nil)
+
+#+HTML: <script src="assets/js/tag-filter.js"></script>
+
+@@html:<a href="/atom.xml" class="btn small">✉ | subscribe » atom</a> @@ 
+
+Hello, welcome to my blog! A listing of all the posts follows.
+
+I am now keeping more subjective (and frequent) pieces in [[../journal/index.org][/journal]]. Things that
+are more /page/ like go in my personal [[../wiki/index.org][/wiki]]. I also try to maintain a regular
+activity [[../log/index.org][/log]].
+
+-----
+
+Filter by /tags/
+
+#+BEGIN_SRC emacs-lisp :eval export :exports results :results raw
+(princ (pile-archive-format-tag-cloud))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :eval export :exports results :results raw
+(princ (pile-archive-format))
+#+END_SRC

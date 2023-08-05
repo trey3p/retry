@@ -1,0 +1,47 @@
+#+TITLE: Resources
+
+This page houses some programming related resources that I have found useful
+while working on /anything/. It's starting out jumbled but will get more organized
+as I put more things in here.
+
+* LaTeX
+While I haven't tried it yet, a modern solution if you write pure $\LaTeX$ and
+not Org or something is probably [[https://tectonic-typesetting.github.io/en-US/index.html][tectonic]].
+
+* Tools
+Few nifty tools. Along with the usual *nix pack, they make life so much easier
+as a programmer.
+
+- [[http://pandoc.org/][Pandoc]] for document conversion. If you feel like something is off, check out
+  [[http://pandoc.org/filters.html][filters]].
+- [[https://www.imagemagick.org/script/index.php][imagemagick]] for image manipulation. A lot of image-fu is possible just by
+  piping through this.
+- [[https://github.com/kohler/gifsicle][gifsicle]] for working with gifs
+- [[https://www.ffmpeg.org/][ffmpeg]] for media conversion.
+- [[https://www.graphviz.org/][graphviz]] and [[http://ditaa.sourceforge.net/][ditaa]] for making graphs, flowcharts etc. Both go really nicely in
+  org-babel.
+- [[https://harelba.github.io/q/][q]] allows running SQL over CSVs.
+- [[https://stedolan.github.io/jq/][jq]] for working with json strings in command line. Also see [[https://github.com/simeji/jid][jid]].
+- +[[https://httpie.org/][HTTPie]] as HTTP client.+ Just use ~curl~. In Emacs, try [[https://github.com/pashky/restclient.el][restclient]] and [[https://github.com/alf/ob-restclient.el][ob-restclient]].
+- [[https://github.com/ericchiang/pup][pup]] for working with html strings.
+- [[https://rg3.github.io/youtube-dl/][youtube-dl]] for downloading media.
+- [[https://aria2.github.io/][aria2]] for downloading the rest. There is an [[https://github.com/LdBeth/aria2.el/][interface]] for Emacs but I haven't used it.
+- [[https://github.com/tapio/live-server][live-server]] for avoiding ~python -m SimpleHTTPServer~.
+- [[https://ngrok.com][ngrok]] for quickly exposing localhost.
+- [[https://github.com/dbcli/pgcli][pgcli]] / [[https://github.com/dbcli/mycli][mycli]] as db cli.
+- [[https://github.com/tldr-pages/tldr][tldr]] for quick docs.
+- [[https://github.com/BurntSushi/ripgrep][rg]] / [[https://github.com/ggreer/the_silver_searcher][ag]] for searching in code. Spacemacs has nice ag wrappers. 
+- [[https://github.com/wireservice/csvkit][csvkit]] for csv-fu. Haven't used it but tools like ~csvcut~ are really nice.
+- Command line tools from ~poppler-utils~ can help you with almost every pdf
+  related task.
+- [[https://github.com/clibs/entr][entr]] helps in rerunning commands based on file changes.
+- [[https://github.com/MaartenBaert/ssr][SimpleScreenRecorder]] does most of the things I want. A few other fancier tools
+  I tried don't work very nicely with tiling systems.
+- I like [[https://github.com/tobimensch/termsql][termsql]] for working with tabular data in terminal. There might be
+  better tools for particular use cases, but in general, just the possibility of
+  using plain sql works nicely.
+- [[https://www.ledger-cli.org/][ledger]] for accounting.
+- [[https://diffoscope.org/][diffoscope]] helps in diffing much more than just files.
+- Though I don't use it, [[http://taskjuggler.org][TaskJuggler]] looks like something that belongs here.
+- [[https://www.gpsbabel.org/index.html][gpsbabel]] for working with GPS logs and related file formats. You might also
+  like to use [[https://github.com/tumic0/GPXSee][GPXSee]] for visualizing tracks.
